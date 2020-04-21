@@ -1,0 +1,9 @@
+vector noises;                       //Create_Radius-vector_of_each_voxel
+vector fr = chv("Frequency");        //Create_Noise_frequency_chanel
+vector of = chv("Offset");           //Create_Noise_offset_channel
+int tu = int(chi("Turbulence"));     //Create_Turbulence_noise_channel    
+float ro = chf("Roughness");         //Create_Roughness_noise_channel
+float at = chf("Attenuation");       //Create_Attenbuation_noise_channel
+
+noises = @P + anoise(@P*fr+of,tu,ro,at); //Add_noise_for_each_voxel_position
+@density = volumesample(0,0,noises);     //Create_density_attribute_and_apply_noise_for_volume 
